@@ -12,7 +12,6 @@ module pulse_count
     input   wire            sys_rst_n   ,   //复位信号输入
     input   wire            pulse_port  ,   //脉冲信号输入
     input   wire            stat_port   ,   //状态切换信号输入
-    input   wire            stat_change ,   //状态切换信号输入
 
     output  reg     [19:0]  pulse_num       //计数值输出
 ); 
@@ -121,13 +120,13 @@ always @(posedge sys_clk or negedge sys_rst_n) begin
     end
 end
 
-//stat_flag 下降沿触发，也就是状态转换按键按下且消抖结束后触发
-always @(negedge stat_flag or negedge sys_rst_n) begin
+//stat_flag = 1 也就是状态转换按键按下且消抖结束后拉高
+always @(posedge sys_clk or negedge sys_rst_n) begin
     if (sys_rst_n == 1'b0) begin
         drive_stat <= 2'd0; //默认是0状态，也就是等待开车
     end
 
-    else if (stat_change == 1'b0) begin //按键按下时
+    else if (stat_flag == 1'b1) begin //按键按下时
         case(drive_stat)
             2'd0    : drive_stat <= 2'd2; 		// drive_stat等于0时，按下按键，说明开始计价，跳转到驾驶状态2
             2'd1    : drive_stat <= 2'd2; 		// drive_stat等于1时，按下按键，说明要从等待状态跳转到驾驶状态2
@@ -142,62 +141,79 @@ always @(negedge stat_flag or negedge sys_rst_n) begin
 end
 
 //****************************************************************************************************************
-//pulse_flag:当计数满20ms后产生按键有效标志位
-//且 pulse_flag 在999_999时拉高,维持一个时钟的高电平
-always@(posedge sys_clk or negedge sys_rst_n) begin
-    if(sys_rst_n == 1'b0)
-        pulse_flag <= 1'b0; //pulse_flag 默认高电平
-
-    else if(cnt_20ms == CNT_MAX) //消去抖动
-        pulse_flag <= 1'b1; //pulse_flag拉高一个时钟周期
-
-    else
-        pulse_flag <= 1'b0;
-end
-
-//用于切换状态的按键
-always @(posedge sys_clk or negedge sys_rst_n) begin
-    if (sys_rst_n == 1'b0)
-        stat_flag <= 1'b1;
-
-    else if (cnt_20ms1 == CNT_MAX)
-        stat_flag <= 1'b0; //计数值计满之后，拉低
-
-    else
-        stat_flag <= stat_flag;
-end
-//****************************************************************************************************************
-//脉冲按键滤波模块
-//cnt_20ms:如果时钟的上升沿检测到外部按键输入的值为低电平时，计数器开始计数
-always@(posedge sys_clk or negedge sys_rst_n) begin
-    if(sys_rst_n == 1'b0)
-        cnt_20ms <= 20'b0;
-
-    else    if(pulse_port == 1'b1) //松手为1
-        cnt_20ms <= 20'b0;
-
-    else    if(cnt_20ms == CNT_MAX && pulse_port == 1'b0) //按下为0
-        cnt_20ms <= cnt_20ms;
-
-    else
-        cnt_20ms <= cnt_20ms + 1'b1;
-end
-
 //状态切换按键滤波模块
 //cnt_20ms1:如果时钟的上升沿检测到外部按键输入的值为低电平时，计数器开始计数
 always@(posedge sys_clk or negedge sys_rst_n) begin
-    if(sys_rst_n == 1'b0)
+    if(sys_rst_n == 1'b0) begin
         cnt_20ms1 <= 20'b0;
+        stat_flag <= 1'b0;
+    end
 
-    else    if(stat_port == 1'b1) //松手为1
+    else if(stat_port == 1'b1) begin//松手为1
         cnt_20ms1 <= 20'b0;
+        stat_flag <= 1'b0;
+    end
 
-    else    if(cnt_20ms1 == CNT_MAX && stat_port == 1'b0) //按下为0
-        cnt_20ms1 <= cnt_20ms1;
+    else if(cnt_20ms1 == CNT_MAX && stat_port == 1'b0) begin //按下为0
+        cnt_20ms1 <= 20'd0;
+        stat_flag <= 1'b1; //拉高一个时钟周期
+    end
 
-    else
+    else begin
         cnt_20ms1 <= cnt_20ms1 + 1'b1;
+        stat_flag <= 1'b0;        
+    end
 end
+
+//用于切换状态的按键
+// always @(posedge sys_clk or negedge sys_rst_n) begin
+//     if (sys_rst_n == 1'b0)
+//         stat_flag <= 1'b1;
+
+//     else if (cnt_20ms1 == CNT_MAX)
+//         stat_flag <= 1'b0; //计数值计满之后，拉低
+
+//     else
+//         stat_flag <= stat_flag;
+// end
+//****************************************************************************************************************
+//脉冲按键滤波模块
+//cnt_20ms:如果时钟的上升沿检测到外部按键输入的值为低电平时，计数器开始计数
+//pulse_flag:当计数满20ms后产生按键有效标志位
+//且 pulse_flag 在999_999时拉高,维持一个时钟的高电平
+always@(posedge sys_clk or negedge sys_rst_n) begin
+    if(sys_rst_n == 1'b0) begin
+        cnt_20ms <= 20'b0;
+        pulse_flag <= 1'b0;
+    end
+
+    else if(pulse_port == 1'b1) begin//松手为1
+        cnt_20ms <= 20'b0;
+        pulse_flag <= 1'b0;
+    end
+
+    else if(cnt_20ms == CNT_MAX && pulse_port == 1'b0) begin//按下为0
+        cnt_20ms <= 20'd0;
+        pulse_flag <= 1'b1; //标志位拉高一个时钟周期
+    end
+
+    else begin
+        cnt_20ms <= cnt_20ms + 1'b1;
+        pulse_flag <= 1'b0;
+    end
+end
+
+
+// always@(posedge sys_clk or negedge sys_rst_n) begin
+//     if(sys_rst_n == 1'b0)
+//         pulse_flag <= 1'b0; //pulse_flag 默认高电平
+
+//     else if(cnt_20ms == CNT_MAX) //消去抖动
+//         pulse_flag <= 1'b1; //pulse_flag拉高一个时钟周期
+
+//     else
+//         pulse_flag <= 1'b0;
+// end
 //****************************************************************************************************************
 
 endmodule
