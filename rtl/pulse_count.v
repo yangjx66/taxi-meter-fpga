@@ -103,9 +103,9 @@ always @(posedge sys_clk or negedge sys_rst_n) begin
         price <= 20'd0;
 
     else begin
-        if (km_num <= 20'd3) //公里数小于3时
-            price <= 20'd8 + wait_min + a; //起步价8元
-        else if (km_num > 20'd3) //大于3公里的时候
+        if (km_num < 20'd3)//公里数小于3时，且百米数等于0
+            price <= 20'd8 + wait_min + a; //起步价8元,考虑额外的时间支出和小于一公里的部分
+        else if (km_num >= 20'd3) //大于3公里的时候
             //减去初始3km，判断是否有不足一公里的部分，有的话再加1km，然后乘以2，再加上起步价8块，再加等待时间的费用
             price <= ((km_num - 20'd3 + b) * 20'd2) + 20'd8 + wait_min + a; 
             // price <= (wait_min * 'd100) + wait_sec;
