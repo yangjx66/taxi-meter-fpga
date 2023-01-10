@@ -74,7 +74,7 @@ always @(posedge sys_clk or negedge sys_rst_n) begin
         end
     end
     else
-        wait_sec <= 1'd0;
+        wait_sec <= wait_sec;
 end
 //wait_min
 always @(posedge sys_clk or negedge sys_rst_n) begin
@@ -90,7 +90,7 @@ always @(posedge sys_clk or negedge sys_rst_n) begin
 
     end    
     else
-        wait_min <= 20'd0;
+        wait_min <= wait_min;
 end
 //****************************************************************************************************************
 //这里是
