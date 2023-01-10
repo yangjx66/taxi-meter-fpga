@@ -77,10 +77,12 @@ always @(posedge sys_clk or negedge sys_rst_n) begin
     else
         wait_sec <= wait_sec;
 end
+
 //wait_min
 always @(posedge sys_clk or negedge sys_rst_n) begin
     if (sys_rst_n == 1'b0)
         wait_min <= 20'd0;
+
     else if (drive_stat == 1'd1) begin
         if (wait_sec < 'd59)
             wait_min <= wait_min;
@@ -88,13 +90,12 @@ always @(posedge sys_clk or negedge sys_rst_n) begin
             wait_min <= wait_min + 20'd1;
         else
             wait_min <= wait_min;
-
     end    
+
     else
         wait_min <= wait_min;
 end
 //****************************************************************************************************************
-//这里是
 //pulse_num<=30:price=8
 //pulse_num> 30:price=8+2*((pulse_num-30)/10)
 always @(posedge sys_clk or negedge sys_rst_n) begin
@@ -107,16 +108,21 @@ always @(posedge sys_clk or negedge sys_rst_n) begin
         else if (km_num > 20'd3) //大于3公里的时候
             //减去初始3km，判断是否有不足一公里的部分，有的话再加1km，然后乘以2，再加上起步价8块，再加等待时间的费用
             price <= ((km_num - 20'd3 + b) * 20'd2) + 20'd8 + wait_min + a; 
+            // price <= (wait_min * 'd100) + wait_sec;
             // price <= (km_num * 'd10) + hm_num; 
         else
             price <= price;
     end
 end
+
 wire [19:0] a;
 assign a = (wait_sec == 6'd0) ? 20'd0 : 20'd1;
 
 wire [19:0] b;
 assign b = (hm_num == 4'd0) ? 20'd0 : 20'd1;
+
+// wire [19:0] c;
+// assign c = 
 //****************************************************************************************************************
 //控制
 always @(posedge sys_clk or negedge sys_rst_n) begin
