@@ -2,10 +2,9 @@
 
 ## **出租车计价器代做项目**
 
-> * 软件：Quartus 13.1
-> * 语言：Verilog
-> * 芯片型号：Altera Cyclone IVE EP4CE10F17C8
-> * 仿真软件：Modelsim
+> * Environment       ：Quartus 13.1, Modelsim
+> * Program language  ：Verilog
+> * Device            ：Altera Cyclone IVE EP4CE10F17C8
 
 **目标和要求系统必须具有如下基础功能:**
 * 1、当行程小于基本里程时，显示起步价，基本里程设3公里，起步价设8元
