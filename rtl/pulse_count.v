@@ -13,7 +13,8 @@ module  data_gen
     output  wire    [5:0]   point       ,   //小数点显示,高电平有效
     output  reg     [19:0]  price       ,   //价格
     output  reg             seg_en      ,   //数码管使能信号，高电平有效
-    output  wire            sign            //符号位，高电平显示负号
+    output  wire            sign        ,   //符号位，高电平显示负号
+    output  wire            stat_led        //指示状态的led
 );
 
 
@@ -39,7 +40,7 @@ reg [25:0]  wait_cnt    ;   //26bit，等待时的计数器，计满为1s
 reg [19:0]  wait_min    ;   //等待的分钟数，不足一分钟按一分钟算
 reg [5:0]   wait_sec    ;   //不足1min的部分
 
-
+assign stat_led = drive_stat;
 //****************************************************************************************************************
 //等待按键按下之后，切换到等待状态，及drive_stat = 1，每等待一分钟，加一块钱，不足一分钟的按一分钟算
 //wait_cnt

@@ -11,7 +11,9 @@ module  top_seg_595
     output  wire            stcp        ,   //输出数据存储寄时钟
     output  wire            shcp        ,   //移位寄存器的时钟输入
     output  wire            ds          ,   //串行数据输入
-    output  wire            oe              //输出使能信号
+    output  wire            oe          ,   //输出使能信号
+    output  wire            stat_led        //指示状态的led
+
 );
 
 //********************************************************************//
@@ -37,7 +39,8 @@ data_gen    data_gen_inst
     .seg_en      (seg_en   ),   //数码管使能信号，高电平有效
     .sign        (sign     ),    //符号位，高电平显示负号
     .pulse_port  (pulse_port),
-    .stat_port   (stat_port)
+    .stat_port   (stat_port),
+    .stat_led    (stat_led)
 );
 
 //-------------seg7_dynamic_inst--------------
