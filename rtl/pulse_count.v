@@ -14,7 +14,8 @@ module  data_gen
     output  reg     [19:0]  price       ,   //价格
     output  reg             seg_en      ,   //数码管使能信号，高电平有效
     output  wire            sign        ,   //符号位，高电平显示负号
-    output  wire            stat_led        //指示状态的led
+    output  wire            stat_led    ,   //指示状态的led
+    output  reg             dist_led        //里程每增加100米，led取反一次
 );
 
 
@@ -144,14 +145,17 @@ end
 always @(posedge sys_clk or negedge sys_rst_n) begin
     if (sys_rst_n == 1'b0) begin
         hm_num <= 4'd0; //百米数清零
+        dist_led <= 1'b0;
     end
     else if (pulse_flag == 1'b1) begin
+        dist_led <= ~dist_led;
         if (hm_num < 4'd9) //没有计满一公里时
             hm_num <= hm_num + 1'd1; //百米数+1
         else //等于900米时，清零
             hm_num <= 4'd0; 
     end
     else begin
+        dist_led <= dist_led;
         hm_num <= hm_num;
     end
 end
