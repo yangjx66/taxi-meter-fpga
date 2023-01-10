@@ -96,8 +96,8 @@ always @(posedge sys_clk or negedge sys_rst_n) begin
         wait_min <= wait_min;
 end
 //****************************************************************************************************************
-//pulse_num<=30:price=8
-//pulse_num> 30:price=8+2*((pulse_num-30)/10)
+//计算总价：包括里程价格加上等待时间的额外价格
+//里程价格考虑：三公里以内的8元钱，三公里以上每公里2元钱
 always @(posedge sys_clk or negedge sys_rst_n) begin
     if (sys_rst_n == 1'b0)
         price <= 20'd0;
@@ -115,14 +115,30 @@ always @(posedge sys_clk or negedge sys_rst_n) begin
     end
 end
 
-wire [19:0] a;
-assign a = (wait_sec == 6'd0) ? 20'd0 : 20'd1;
+//****************************************************************************************************************
+//这里是不足等待时间不足一分钟的支出
+reg a;
+// assign a = (wait_sec == 6'd0) ? 20'd0 : 20'd1;
+always @(posedge sys_clk or negedge sys_rst_n) begin
+    if (sys_rst_n == 1'b0)
+        a <= 1'b0;
+    else if (wait_sec == 6'd0) //秒等于0的时候，额外支出为0
+        a <= 1'b0;
+    else
+        a <= 1'b1; //秒大于0是，按照一分钟计算，加一元钱
+end
 
-wire [19:0] b;
-assign b = (hm_num == 4'd0) ? 20'd0 : 20'd1;
-
-// wire [19:0] c;
-// assign c = 
+//这里是不足一公里的部分
+reg b;
+// assign b = (hm_num == 4'd0) ? 20'd0 : 20'd1;
+always @(posedge sys_clk or negedge sys_rst_n) begin
+    if (sys_rst_n == 1'b0)
+        b <= 1'b0;
+    else if (hm_num == 4'd0) //百米数等于0时，没有额外支出
+        b <= 1'b0;
+    else
+        b <= 1'b1; //百米数大于0时，按照一公里计算，加2块钱
+end
 //****************************************************************************************************************
 //控制
 always @(posedge sys_clk or negedge sys_rst_n) begin
