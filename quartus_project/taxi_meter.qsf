@@ -68,4 +68,6 @@ set_location_assignment PIN_M1 -to stat_port
 set_location_assignment PIN_K9 -to stcp
 set_location_assignment PIN_E1 -to sys_clk
 set_location_assignment PIN_M15 -to sys_rst_n
+set_global_assignment -name CDF_FILE output_files/Chain2.cdf
+set_location_assignment PIN_L7 -to stat_led
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
