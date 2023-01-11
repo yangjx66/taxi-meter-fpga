@@ -3,7 +3,7 @@
 ## **出租车计价器代做项目**
 
 > * Environment       ：Quartus 13.1, Modelsim
-> * Program language  ：Verilog
+> * Program language  ：Verilog HDL
 > * Device            ：Altera Cyclone IVE EP4CE10F17C8
 
 **目标和要求系统必须具有如下基础功能:**
