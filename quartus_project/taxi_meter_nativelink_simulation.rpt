@@ -18,5 +18,5 @@ Sim dir               :  simulation\modelsim
 
 Info: Starting NativeLink simulation with ModelSim software
 Sourced NativeLink script d:/altera/13.1/quartus/common/tcl/internal/nativelink/modelsim.tcl
-Warning: File taxi_meter_run_msim_rtl_verilog.do already exists - backing up current file as taxi_meter_run_msim_rtl_verilog.do.bak6
+Warning: File taxi_meter_run_msim_rtl_verilog.do already exists - backing up current file as taxi_meter_run_msim_rtl_verilog.do.bak7
 Info: Spawning ModelSim Simulation software 
