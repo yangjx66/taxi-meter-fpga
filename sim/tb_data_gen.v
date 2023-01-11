@@ -27,197 +27,197 @@ initial
         sys_rst_n   <=  1'b1;
         #100
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
-        #99999
+        # 999999
         pulse_port <= 1'b1;
-        #99999
+        # 999999
         pulse_port <= 1'b0;
         #10000
         stat_port <= 1'b0;
