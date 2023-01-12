@@ -2,20 +2,17 @@
 
 module tb_data_gen();
 
-    reg            sys_clk     ;   //时钟信号输入
-    reg            sys_rst_n   ;   //复位信号输入
-    reg            pulse_port  ;   //脉冲信号输入
-    reg            stat_port   ;   //状态切换信号输入
-    
-   wire    [5:0]   point       ;  //小数点显示,高电平有效
-   
-   wire     [19:0]  price       ;   //价格
-   wire             seg_en      ;   //数码管使能信号，高电平有效
-   
-   wire            sign        ;   //符号位，高电平显示负号
-   wire            stat_led    ;   //指示状态的led
-   
-   wire             dist_led  ;      //里程每增加100米，led取反一次
+reg             sys_clk     ;   //时钟信号输入
+reg             sys_rst_n   ;   //复位信号输入
+reg             pulse_port  ;   //脉冲信号输入
+reg             stat_port   ;   //状态切换信号输入
+
+wire    [5:0]   point       ;   //小数点显示,高电平有效
+wire    [19:0]  price       ;   //价格
+wire            seg_en      ;   //数码管使能信号，高电平有效
+wire            sign        ;   //符号位，高电平显示负号
+wire            stat_led    ;   //指示状态的led
+wire            dist_led    ;   //里程每增加100米，led取反一次
 
 initial
     begin
