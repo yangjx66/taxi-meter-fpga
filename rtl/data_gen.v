@@ -1,3 +1,16 @@
+////////////////////////////////////////////////////////////////////////
+// Author        : YangJinxi
+// Create Date   : 2023/1/8
+// Module Name   : data_gen
+// Project Name  : taxi-meter
+// Target Devices: Altera EP4CE10F17C8N
+// Tool Versions : Quartus 13.1
+// Description   : 计价模块
+//
+// Revision      : V1.0
+// Additional Comments:
+////////////////////////////////////////////////////////////////////////
+
 `timescale  1ns/1ns
 
 module  data_gen
