@@ -1,10 +1,12 @@
 # taxi-meter
 
-## **基于FPGA的出租车计价器**
-
-> * Environment       ：Quartus 13.1, Modelsim
-> * Program language  ：Verilog HDL
-> * Device            ：Altera Cyclone IVE EP4CE10F17C8
+## **基于FPGA的出租车计价器系统**
+> * 作者:       YangJinxi
+> * 创建日期:   2023/1/8
+> * 软件环境:   Quartus 13.1
+> * 仿真环境:   Modelsim
+> * 编程语言:   Verilog HDL
+> * 芯片型号:   Altera Cyclone IVE EP4CE10F17C8
 
 **系统具有如下基础功能:**
 * 1、当行程小于基本里程时，显示起步价，基本里程设3公里，起步价设8元
