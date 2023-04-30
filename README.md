@@ -1,4 +1,4 @@
-# taxi-meter
+# TaxiMeter
 
 ## **基于FPGA的出租车计价器系统**
 > * 作者:       YangJinxi
